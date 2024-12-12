@@ -1,3 +1,4 @@
+import footer from './footer.js';
 class FeaturedProduct {
   static allProducts = [];
   constructor(name, description, price) {
@@ -87,5 +88,5 @@ class DisplayController {
 
 const contentBody = document.querySelector('section#content');
 contentBody.append(DisplayController.displayLogo(), DisplayController.displayIntro(), DisplayController.displayFeaturedProducts());
-
+document.body.append(footer);
 export default contentBody;
