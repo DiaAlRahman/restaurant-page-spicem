@@ -19,7 +19,7 @@ const InitFeaturedProducts = (() => {
 })();
 
 class DisplayController {
-  static createParagraphs(parentNode, text, WordLimit) {
+  static #createParagraphs(parentNode, text, WordLimit) {
     const words = text.split(' ');
     for (let i = 0; i < words.length; i += WordLimit) {
       const paragraphText = words.slice(i, i + WordLimit).join(' ');
@@ -30,7 +30,7 @@ class DisplayController {
     };
   };
 
-  static displayLogo() {
+  static #displayLogo() {
     const header = document.createElement('header');
     const linkHome = document.createElement('a');
     // add image for logo later on
@@ -43,16 +43,16 @@ class DisplayController {
     return header;
   };
 
-  static displayIntro() {
+  static #displayIntro() {
     const article = document.createElement('article');
     const introductionText = 'Come to our restaurant and have fun with your friends! We serve high quality food and make it a little extra spicy. Be sure to come and always try to enjoy your life!'
 
-    DisplayController.createParagraphs(article, introductionText, 45);
+    DisplayController.#createParagraphs(article, introductionText, 45);
 
     return article;
   };
 
-  static displayFeaturedProducts() {
+  static #displayFeaturedProducts() {
     // Create a container for the products
     const section = document.createElement('section');
     section.className = 'featured-products';
@@ -69,7 +69,7 @@ class DisplayController {
       productCard.appendChild(name);
 
       // Create and append product description
-      DisplayController.createParagraphs(productCard, product.description, 10);
+      DisplayController.#createParagraphs(productCard, product.description, 10);
 
       // Create and append product price
       const price = document.createElement('p');
@@ -84,11 +84,15 @@ class DisplayController {
     return section;
   };
 
-  static createContent() {
-    const logo = this.displayLogo();
-    const intro = this.displayIntro();
-    const featuredProducts = this.displayFeaturedProducts();
-    return [logo, intro, featuredProducts];
+  static get display() {
+    const content = document.createElement('section');
+    content.className = 'homepage';
+    const logo = this.#displayLogo();
+    const intro = this.#displayIntro();
+    const featuredProducts = this.#displayFeaturedProducts();
+
+    content.append(logo, intro, featuredProducts);
+    return content;
   };
 };
 
@@ -97,4 +101,4 @@ class DisplayController {
 // const contentBody = document.querySelector('section#content');
 // contentBody.append(DisplayController.displayLogo(), DisplayController.displayIntro(), DisplayController.displayFeaturedProducts());
 // document.body.append(Footer.createFooter());
-export default DisplayController.createContent();
+export default DisplayController;

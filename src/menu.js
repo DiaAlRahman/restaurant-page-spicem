@@ -79,7 +79,7 @@ class Tabs {
       Tabs.currentTab.className = 'currentTab';
     }
   };
-  static firstRun = false;
+  static #firstRun = false;
   static #displayMainMeals() {
     const productCards = new ProductCards()
     productCards.addNewCard('Spicy Noodles', 'Challenge');
@@ -135,7 +135,7 @@ class Tabs {
   };
 
   static get displayCurrentTab() {
-    if (!this.firstRun) {
+    if (!this.#firstRun) {
       Tabs.#displayMainMeals();
     }
     return Tabs.currentTab;
