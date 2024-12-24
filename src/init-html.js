@@ -1,4 +1,3 @@
-import footer from './footer.js';
 class FeaturedProduct {
   static allProducts = [];
   constructor(name, description, price) {
@@ -84,9 +83,18 @@ class DisplayController {
     // Return the container (or append it to the DOM directly if needed)
     return section;
   };
+
+  static createContent() {
+    const logo = this.displayLogo();
+    const intro = this.displayIntro();
+    const featuredProducts = this.displayFeaturedProducts();
+    return [logo, intro, featuredProducts];
+  };
 };
 
-const contentBody = document.querySelector('section#content');
-contentBody.append(DisplayController.displayLogo(), DisplayController.displayIntro(), DisplayController.displayFeaturedProducts());
-document.body.append(footer);
-export default contentBody;
+// console.log(DisplayController.createContent())
+
+// const contentBody = document.querySelector('section#content');
+// contentBody.append(DisplayController.displayLogo(), DisplayController.displayIntro(), DisplayController.displayFeaturedProducts());
+// document.body.append(Footer.createFooter());
+export default DisplayController.createContent();
