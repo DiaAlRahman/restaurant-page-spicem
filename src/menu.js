@@ -87,7 +87,6 @@ class Tabs {
     productCards.addNewCard('Hotdogs', 'It has a good personality!');
 
     Tabs.currentTab.replaceChildren(productCards.display);
-    this.firstRun = true;
   };
 
   static #displaySides() {
@@ -97,7 +96,6 @@ class Tabs {
     productCards.addNewCard('Eggs', 'For them fuchkas');
 
     Tabs.currentTab.replaceChildren(productCards.display);
-    this.firstRun = true;
   };
 
   static #displayDrinks() {
@@ -110,7 +108,6 @@ class Tabs {
     productCards.addNewCard('Apple and Mango Juice', 'A tropical blend of tart apples and sweet mangoes.');
 
     Tabs.currentTab.replaceChildren(productCards.display);
-    this.firstRun = true;
   };
 
   static #displaySauces() {
@@ -121,7 +118,6 @@ class Tabs {
     productCards.addNewCard('Hot Shatta', 'A spicy and fiery sauce that adds heat to any dish.');
 
     Tabs.currentTab.replaceChildren(productCards.display);
-    this.firstRun = true;
   };
 
   static allTabsHTML() {
@@ -131,19 +127,20 @@ class Tabs {
     const drinksButton = createButtonHTML('Drinks', Tabs.#displayDrinks);
     const saucesButton = createButtonHTML('Sauces', Tabs.#displaySauces);
 
-    return [mainMealsButton, sidesButton, drinksButton, saucesButton];
+    Tabs.navBar.append(mainMealsButton, sidesButton, drinksButton, saucesButton);
   };
 
   static get displayCurrentTab() {
     if (!this.#firstRun) {
       Tabs.#displayMainMeals();
+      this.#firstRun = true;
     }
     return Tabs.currentTab;
   }
   static get displayNavBar() {
-    const tabs = Tabs.allTabsHTML()
-    for (let i = 0; i < tabs.length; i++) {
-      Tabs.navBar.appendChild(tabs[i]);
+    if (!this.#firstRun) {
+      Tabs.allTabsHTML();
+      this.#firstRun = true;
     }
     return Tabs.navBar;
   }
