@@ -30,19 +30,6 @@ class DisplayController {
     };
   };
 
-  static #displayLogo() {
-    const header = document.createElement('header');
-    const linkHome = document.createElement('a');
-    // add image for logo later on
-
-    linkHome.textContent = "Spiciem";
-    linkHome.setAttribute('href', '/');
-    linkHome.setAttribute('aria-label', 'Homepage');
-    header.appendChild(linkHome)
-
-    return header;
-  };
-
   static #displayIntro() {
     const article = document.createElement('article');
     const introductionText = 'Come to our restaurant and have fun with your friends! We serve high quality food and make it a little extra spicy. Be sure to come and always try to enjoy your life!'
@@ -87,11 +74,10 @@ class DisplayController {
   static get display() {
     const content = document.createElement('section');
     content.className = 'homepage';
-    const logo = this.#displayLogo();
     const intro = this.#displayIntro();
     const featuredProducts = this.#displayFeaturedProducts();
 
-    content.append(logo, intro, featuredProducts);
+    content.append(intro, featuredProducts);
     return content;
   };
 };

@@ -1,6 +1,6 @@
 class Footer {
   // Method to create the div with spans
-  static createFooterDiv() {
+  static #createFooterDiv() {
     const div = document.createElement('div');
     div.className = 'upper-footer';
 
@@ -24,7 +24,7 @@ class Footer {
   }
 
   // Method to create the paragraph
-  static createFooterParagraph() {
+  static #createFooterParagraph() {
     const p = document.createElement('p');
     p.textContent = 'We are not in any way responsible for the pain caused by the noodles.';
     p.style.fontSize = 'smaller';
@@ -32,28 +32,12 @@ class Footer {
     return p;
   }
 
-  // Method to create the .footer-content div
-  static createFooterContent() {
-    const footerContent = document.createElement('div');
-    footerContent.className = 'footer-content';
-
-    // Add the inner div and paragraph
-    footerContent.appendChild(Footer.createFooterDiv());
-    footerContent.appendChild(Footer.createFooterParagraph());
-
-    return footerContent;
-  }
-
   // Method to create the footer
-  static createFooter() {
+  static render() {
     const footer = document.createElement('footer');
-
-    // Add the footer content
-    footer.appendChild(Footer.createFooterContent());
-
-    return footer;
+    footer.append(Footer.#createFooterDiv(), Footer.#createFooterParagraph());
+    document.body.appendChild(footer);
   }
 }
 
-
-export default Footer.createFooter();
+Footer.render()
