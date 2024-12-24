@@ -140,7 +140,6 @@ class Tabs {
   static get displayNavBar() {
     if (!this.#firstRun) {
       Tabs.allTabsHTML();
-      this.#firstRun = true;
     }
     return Tabs.navBar;
   }

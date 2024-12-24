@@ -1,10 +1,16 @@
+import spiciemLogo from './spiciemLogo.png';
+
 class Header {
   static #displayLogo() {
     const header = document.createElement('header');
     const linkHome = document.createElement('a');
+    const logo = document.createElement('img');
+    logo.className = 'logo';
+    logo.src = spiciemLogo;
 
     // Set text and attributes for the logo link
-    linkHome.textContent = "Spiciem";
+    // linkHome.textContent = "Spiciem";
+    linkHome.appendChild(logo);
     linkHome.setAttribute('href', '/');
     linkHome.setAttribute('aria-label', 'Homepage');
 

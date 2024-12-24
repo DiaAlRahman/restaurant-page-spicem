@@ -45,6 +45,7 @@ function createTab(name, function_) {
 
 const mainNavbar = document.querySelector('#mainTabs');
 const currentTab = new Switch(document.querySelector('#content'));
+currentTab.toHomepage();
 
 const homepageTab = createTab('Home', currentTab.toHomepage);
 const menuTab = createTab('Menu', currentTab.toMenu);
