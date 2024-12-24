@@ -80,7 +80,7 @@ class Tabs {
     }
   };
   static firstRun = false;
-  static displayMainMeals() {
+  static #displayMainMeals() {
     const productCards = new ProductCards()
     productCards.addNewCard('Spicy Noodles', 'Challenge');
     productCards.addNewCard('Fuchkas', 'Deshi');
@@ -90,7 +90,7 @@ class Tabs {
     this.firstRun = true;
   };
 
-  static displaySides() {
+  static #displaySides() {
     const productCards = new ProductCards();
     productCards.addNewCard('Fries', 'Get them soggy or crispy!');
     productCards.addNewCard('Curly Fries', 'For all you straight folks!');
@@ -100,7 +100,7 @@ class Tabs {
     this.firstRun = true;
   };
 
-  static displayDrinks() {
+  static #displayDrinks() {
     const productCards = new ProductCards();
     productCards.addNewCard('Cade Green', 'A refreshing, minty drink that cools you down.');
     productCards.addNewCard('Blue', 'A sweet, berry-infused delight with a vibrant hue.');
@@ -113,7 +113,7 @@ class Tabs {
     this.firstRun = true;
   };
 
-  static displaySauces() {
+  static #displaySauces() {
     const productCards = new ProductCards();
     productCards.addNewCard('Tangy Tamarind', 'A sweet and sour sauce with a bold, tangy flavor.');
     productCards.addNewCard('Classic Ketchup', 'A timeless, tomato-based sauce with a hint of sweetness.');
@@ -126,17 +126,17 @@ class Tabs {
 
   static allTabsHTML() {
     // Create the buttons
-    const mainMealsButton = createButtonHTML('Main Meals', Tabs.displayMainMeals);
-    const sidesButton = createButtonHTML('Sides', Tabs.displaySides);
-    const drinksButton = createButtonHTML('Drinks', Tabs.displayDrinks);
-    const saucesButton = createButtonHTML('Sauces', Tabs.displaySauces);
+    const mainMealsButton = createButtonHTML('Main Meals', Tabs.#displayMainMeals);
+    const sidesButton = createButtonHTML('Sides', Tabs.#displaySides);
+    const drinksButton = createButtonHTML('Drinks', Tabs.#displayDrinks);
+    const saucesButton = createButtonHTML('Sauces', Tabs.#displaySauces);
 
     return [mainMealsButton, sidesButton, drinksButton, saucesButton];
   };
 
   static get displayCurrentTab() {
     if (!this.firstRun) {
-      Tabs.displayMainMeals();
+      Tabs.#displayMainMeals();
     }
     return Tabs.currentTab;
   }
