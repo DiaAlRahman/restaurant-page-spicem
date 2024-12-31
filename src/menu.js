@@ -70,9 +70,8 @@ class Tabs {
     if (!Tabs.navBar) {
       Tabs.navBar = document.createElement('nav');
       Tabs.navBar.style.display = 'flex';  // Align buttons horizontally
-      Tabs.navBar.style.gap = '10px';      // Space between the buttons
       Tabs.navBar.style.padding = '10px';  // Add some padding to the nav bar
-      Tabs.navBar.style.backgroundColor = '#333'; // Background color for the nav bar
+      Tabs.navBar.className = 'menu-bar';
     }
     if (!Tabs.currentTab) {
       Tabs.currentTab = document.createElement('section');
@@ -125,7 +124,7 @@ class Tabs {
     const mainMealsButton = createButtonHTML('Main Meals', Tabs.#displayMainMeals);
     const sidesButton = createButtonHTML('Sides', Tabs.#displaySides);
     const drinksButton = createButtonHTML('Drinks', Tabs.#displayDrinks);
-    const saucesButton = createButtonHTML('Sauces', Tabs.#displaySauces);
+    const saucesButton = createButtonHTML('Sauce', Tabs.#displaySauces);
 
     Tabs.navBar.append(mainMealsButton, sidesButton, drinksButton, saucesButton);
   };

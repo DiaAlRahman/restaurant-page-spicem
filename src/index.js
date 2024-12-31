@@ -1,9 +1,9 @@
+import './style.css';
 import './header.js';
 import homepage from "./homepage.js";
 import menu from './menu.js';
 import contact from './contact.js';
 import './footer.js';
-
 
 // init homepage
 // import homepage from "./homepage.js";

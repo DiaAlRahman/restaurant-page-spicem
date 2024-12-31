@@ -14,7 +14,7 @@ class FeaturedProduct {
 
 const InitFeaturedProducts = (() => {
   new FeaturedProduct('Cade, limited edition drinks', '5 different flavours: Green, Blue, Red Grape, Pink, and Apple. So, hurry up and come before all these sells out.', '5 SAR');
-  new FeaturedProduct("Spicy Noodeles", "No water, no milk, only spice! Have your friends come over and let the mouth-burning sensation begin! Let's see how much heat you can take! We have found the rarest and the spiciect noodles imported from Korea. This mouth-burning noodles measures up-to 9000 Scollville(SHU).", '10 SAR');
+  new FeaturedProduct("Spicy Noodles", "No water, no milk, only spice! Have your friends come over and let the mouth-burning sensation begin! Let's see how much heat you can take! We have found the rarest and the spiciect noodles imported from Korea. This mouth-burning noodles measures up-to 9000 Scollville(SHU).", '10 SAR');
   new FeaturedProduct('Fuchkas', "Come with your firends to chop on some fuchkas. Starting from only 5 riyals, it's not the mouth-burning fuchkas; it's just the plain old traditional fuchkas that everyone loves. We will be serving it with chilli water and tamarind water.", '5 SAR');
 })();
 
@@ -32,7 +32,8 @@ class DisplayController {
 
   static #displayIntro() {
     const article = document.createElement('article');
-    const introductionText = 'Come to our restaurant and have fun with your friends! We serve high quality food and make it a little extra spicy. Be sure to come and always try to enjoy your life!'
+    article.className = 'owner-message';
+    const introductionText = '"Come to our restaurant and have fun with your friends! We serve high quality food and make it a little extra spicy. Be sure to come and always try to enjoy your life!" -- Dia, 2017'
 
     DisplayController.#createParagraphs(article, introductionText, 45);
 
@@ -43,6 +44,10 @@ class DisplayController {
     // Create a container for the products
     const section = document.createElement('section');
     section.className = 'featured-products';
+
+    const sectionTitle = document.createElement('h2');
+    sectionTitle.textContent = 'Featured Products';
+    section.appendChild(sectionTitle);
 
     // Iterate over all products and create HTML for each
     FeaturedProduct.allProducts.forEach(product => {

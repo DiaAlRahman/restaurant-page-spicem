@@ -3,6 +3,7 @@ import spiciemLogo from './spiciemLogo.png';
 class Header {
   static #displayLogo() {
     const header = document.createElement('header');
+    header.className = 'logo';
     const linkHome = document.createElement('a');
     const logo = document.createElement('img');
     logo.className = 'logo';
